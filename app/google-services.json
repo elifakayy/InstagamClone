@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "929799509209",
+    "project_id": "instaklon-18e80",
+    "storage_bucket": "instaklon-18e80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929799509209:android:ccabe5e04d181a4eb29ac8",
+        "android_client_info": {
+          "package_name": "com.example.instagamclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929799509209-e7bv545bvsegt93mb4j0tt26kf2b3slt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoz_04dM--KnZS_eJFhPyJJkFeGnHtHtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929799509209-e7bv545bvsegt93mb4j0tt26kf2b3slt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
