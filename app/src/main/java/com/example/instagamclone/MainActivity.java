@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -26,10 +27,42 @@ public class MainActivity extends AppCompatActivity {
 
         auth=FirebaseAuth.getInstance();
 
+        FirebaseUser user = auth.getCurrentUser();
+        if(user != null)
+        {
+            Intent intent = new Intent(MainActivity.this,FeedActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+
     }
 
     public void signinClicked(View view) {
 
+        String email = binding.emailtext.getText().toString();
+        String password = binding.passwordtext.getText().toString();
+
+        if(email.equals("")||password.equals(""))
+        {
+            Toast.makeText(this,"Enter Email and password",Toast.LENGTH_LONG).show();
+
+        }else{
+            auth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    Intent intent = new Intent(MainActivity.this,FeedActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(MainActivity.this,e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
+
+                }
+            });
+        }
     }
 
     public void signupClicked(View view) {
