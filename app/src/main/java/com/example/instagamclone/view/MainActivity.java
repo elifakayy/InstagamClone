@@ -1,11 +1,10 @@
-package com.example.instagamclone;
+package com.example.instagamclone.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = auth.getCurrentUser();
         if(user != null)
         {
-            Intent intent = new Intent(MainActivity.this,FeedActivity.class);
+            Intent intent = new Intent(MainActivity.this, FeedActivity.class);
             startActivity(intent);
             finish();
         }
