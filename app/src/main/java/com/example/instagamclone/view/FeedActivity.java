@@ -22,6 +22,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.lang.reflect.Array;
@@ -68,9 +69,12 @@ public class FeedActivity extends AppCompatActivity {
     private void getData()
     {
         //DocumentReference documentReference= firebaseFirestore.collection("Posts").document("sdas")
-//CollectionReference documentReference= firebaseFirestore.collection("Posts")
+        //CollectionReference documentReference= firebaseFirestore.collection("Posts")
 
-        firebaseFirestore.collection("Posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        //filtreleme,dizme firebaseFirestore.collection("Posts").whereEqualTo("useremail","elif@gmail.com").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        //where,order
+        //
+        firebaseFirestore.collection("Posts").orderBy("date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
