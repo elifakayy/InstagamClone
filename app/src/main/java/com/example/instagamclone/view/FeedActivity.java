@@ -3,6 +3,7 @@ package com.example.instagamclone.view;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.instagamclone.R;
+import com.example.instagamclone.adapter.PostAdapter;
 import com.example.instagamclone.databinding.ActivityFeedBinding;
 import com.example.instagamclone.model.Post;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +34,7 @@ public class FeedActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     ArrayList<Post>postArrayList;
     private ActivityFeedBinding binding;
+    PostAdapter postAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,9 @@ public class FeedActivity extends AppCompatActivity {
         firebaseFirestore=FirebaseFirestore.getInstance();
         getData();
 
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        postAdapter= new PostAdapter(postArrayList);
+        binding.recyclerView.setAdapter(postAdapter);
     }
 
     @Override
@@ -90,6 +96,7 @@ public class FeedActivity extends AppCompatActivity {
                         postArrayList.add(post);
 
                     }
+                    postAdapter.notifyDataSetChanged();//yeni veri gelince haber ver
                 }
             }
         });
